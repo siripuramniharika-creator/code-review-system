@@ -1,0 +1,24 @@
+.home-main{
+    .home-page-card{
+        .home-page-card-title-card{
+            .home-icon{
+                color:white !important;
+            }
+        }
+        .home-page-card-subtitle{
+            font-size: 30px;
+            font-family:sans-serif;
+            margin-top: 10px;
+            background: linear-gradient(to right, navy, rgb(17, 17, 207));
+            background-clip: text;          
+            -webkit-background-clip: text; 
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .home-page-submit-button{
+            background-color: black !important;
+            color: white;
+            border-radius: 12px !important;
+        }
+    }
+}

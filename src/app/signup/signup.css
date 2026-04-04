@@ -1,0 +1,24 @@
+.signup-main{
+    .signup-page-card{
+        .signup-page-card-title-card{
+            .signup-icon{
+                color:white !important;
+            }
+        }
+        .signup-page-card-subtitle{
+            font-size: 30px;
+            font-family:sans-serif;
+            margin-top: 10px;
+            background: linear-gradient(to right, navy, rgb(17, 17, 207));
+            background-clip: text;          
+            -webkit-background-clip: text; 
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+        .signup-page-signup-button{
+            background-color: black !important;
+            color: white;
+            border-radius: 12px !important;
+        }
+    }
+}

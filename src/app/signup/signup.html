@@ -1,0 +1,70 @@
+<div class="signup-main flex font-sans bg-blue-100 min-h-screen items-center justify-center p-6">
+    <mat-card class="signup-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-3 space-y-2  w-120">
+        <mat-card-header>
+            <mat-card-title>
+                <div class="flex items-center justify-center">
+                    <mat-card class="signup-page-card-title-card p-4 bg-linear-to-r from-blue-950 to-blue-700 flex items-center justify-center rounded-lg shadow-2xl">                            
+                        <mat-icon class="signup-icon">code_blocks</mat-icon>
+                    </mat-card>
+                </div>
+            </mat-card-title>
+            <mat-card-subtitle class="signup-page-card-subtitle font-sans font-bold ">Create an Account</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="flex flex-col space-y-3 w-full">
+            <p class="text-gray-500 text-[14px] font-sans flex items-center justify-center">Sign up to start reviewing your code with AI</p>
+            <p class="text-black font-bold text-[16px]">Full Name</p>
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput placeholder="Siripuram Niharika" class="w-full">
+            </mat-form-field>
+            <p class="text-black font-bold text-[16px]">Email</p>
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput placeholder="niharika@gmail.com" class="w-full">
+            </mat-form-field>
+            <p class="text-black font-bold text-[16px]">Contact Number</p>
+            <form>
+                <mat-form-field appearance="outline" class="w-full">
+                    <span matTextPrefix>+91 &nbsp;</span>
+                    <input type="tel" matInput placeholder="7569981613">
+                </mat-form-field>
+            </form>
+            <p class="text-black font-bold text-[16px]">Password</p>
+            <mat-form-field appearance="outline" class="w-full">
+                <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'" />
+                <button
+                    matIconButton
+                    matSuffix
+                    (click)="clickEvent($event)"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide()"
+                >
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <p class="text-black font-bold text-[16px]">Select Security Question</p>
+            <mat-form-field appearance="outline" class="w-full">
+                <mat-select [(value)]="selected">
+                    <mat-option value="option">Select</mat-option>
+                    <mat-option value="option1">What was the first programming language you learned?</mat-option>
+                    <mat-option value="option2">What is your favorite programming language?</mat-option>
+                    <mat-option value="option3">Which code editor do you use the most?</mat-option>
+                    <mat-option value="option4">What is the name of your first coding project?</mat-option>
+                    <mat-option value="option5">Which platform do you use to store your code repositories?</mat-option>
+                    <mat-option value="option6">Which programming language do you use most often for projects?</mat-option>
+                    <mat-option value="option7">What is your favorite web development framework?</mat-option>
+                    <mat-option value="option8">Which coding platform do you use for practice?</mat-option>
+                    <mat-option value="option9">What type of applications do you like to build the most?</mat-option>
+                    <mat-option value="option10">What is your favorite subject related to programming?</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p class="text-black font-bold text-[16px]">Security Question Answer</p>
+            <mat-form-field class="w-full" appearance="outline">
+                <input matInput placeholder="e.g.python">
+            </mat-form-field>
+            <button matButton="filled" class="signup-page-signup-button w-full flex items-center">Sign Up</button>
+            <div class="flex items-center justify-center">
+                <p>Already have an account?</p>
+                <button class=" font-bold bg-linear-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent" routerLink="/">Login</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

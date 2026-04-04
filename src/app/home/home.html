@@ -1,0 +1,49 @@
+<div class="home-main flex font-sans bg-blue-100 min-h-screen items-center justify-center">
+    <mat-card class="home-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-2 space-y-2  w-112.5">
+        <mat-card-header>
+            <mat-card-title>
+                <div class="flex items-center justify-center">
+                    <mat-card class="home-page-card-title-card p-4 bg-linear-to-r from-blue-950 to-blue-700 flex items-center justify-center rounded-lg shadow-2xl">                            
+                        <mat-icon class="home-icon">code_blocks</mat-icon>
+                    </mat-card>
+                </div>
+            </mat-card-title>
+            <mat-card-subtitle class="home-page-card-subtitle font-sans font-bold ">Welcome back</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="flex flex-col space-y-3 w-full">
+            <p class="text-gray-500 text-[14px] font-sans flex items-center justify-center">Sign in to your AI Code Review account</p>
+            <p class="text-black font-bold text-[16px]">Username or Email</p>
+            <div class="home-page-username-form flex flex-col ">
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label class="font-sans">Username or Email</mat-label>
+                    <input matInput placeholder="Enter Username" >
+                    <mat-hint class="italic text-[10px] font-bold">e.g.niharika@gmail.com</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="flex justify-between">
+                <p class="text-black font-bold text-[16px]">Password</p>
+                <p class="text-blue-500 font-bold text-[12px]">Forgot password?</p>
+            </div>
+            <div class="home-page-password-form flex flex-col ">
+                <mat-form-field appearance="outline" class="w-full">
+                    <mat-label class="font-sans">Enter your password</mat-label>
+                    <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'" />
+                    <button
+                        matIconButton
+                        matSuffix
+                        (click)="clickEvent($event)"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()"
+                    >
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <button matButton="filled" class="home-page-submit-button w-full flex items-center">Submit</button>
+            <div class="flex items-center justify-center">
+                <p>Don't have an account?</p>
+                <button class=" font-bold bg-linear-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent" routerLink="/signup">Sign up</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
