@@ -16,9 +16,22 @@
             -webkit-text-fill-color: transparent;
         }
         .signup-page-signup-button{
-            background-color: black !important;
+            background: linear-gradient(to right, #172554, #1d4ed8);
             color: white;
             border-radius: 12px !important;
+            font-family: sans-serif;
         }
     }
+}
+::ng-deep .mat-mdc-select-value {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #9CA3AF;
+  font-weight: 500;
+}
+::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9CA3AF;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: sans-serif;
 }

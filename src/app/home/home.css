@@ -16,9 +16,16 @@
             -webkit-text-fill-color: transparent;
         }
         .home-page-submit-button{
-            background-color: black !important;
+            background: linear-gradient(to right, #172554, #1d4ed8);
             color: white;
             border-radius: 12px !important;
+            font-family: sans-serif;
         }
     }
+}
+::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9CA3AF;   /* Tailwind gray-400 */
+  font-size: 14px;
+  font-weight: 500;
+  font-family: sans-serif;
 }

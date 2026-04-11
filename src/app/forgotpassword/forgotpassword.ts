@@ -1,4 +1,4 @@
-import { Component ,signal} from '@angular/core';
+import { Component,signal } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,24 +6,23 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-import { RouterLink ,Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-signup',
-  imports: [MatButtonModule,MatCardModule,MatIconModule,MatInputModule,MatFormFieldModule,FormsModule,RouterLink,MatSelectModule],
-  templateUrl: './signup.html',
-  styleUrl: './signup.css',
+  selector: 'app-forgotpassword',
+  imports: [MatButtonModule,MatCardModule,MatInputModule,MatIconModule,MatFormFieldModule,FormsModule,MatSelectModule],
+  templateUrl: './forgotpassword.html',
+  styleUrl: './forgotpassword.css',
 })
-export class Signup {
+export class Forgotpassword {
   hide = signal(true);
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
-  selected = 'option';
+  selected="option";
   constructor(private router: Router) {}
   handleAction(action: string) {
-
     if (action === 'close') {
       const confirmClose = confirm("Are you sure you want to close? Your entered details will be lost.");
       if (confirmClose) {
@@ -38,4 +37,3 @@ export class Signup {
     }
   }
 }
-

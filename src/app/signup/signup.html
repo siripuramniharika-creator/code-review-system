@@ -1,33 +1,37 @@
-<div class="signup-main flex font-sans bg-blue-100 min-h-screen items-center justify-center p-6">
-    <mat-card class="signup-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-3 space-y-2  w-120">
+<div class="signup-main flex font-[sans-serif] bg-linear-to-br from-purple-300 via-blue-400 to-indigo-500 min-h-screen items-center justify-center p-6">
+    <mat-card class="signup-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-3 space-y-2  w-120 relative">
         <mat-card-header>
             <mat-card-title>
-                <div class="flex items-center justify-center">
+                <div class=" absolute top-4 left-4 right-4 flex justify-between">
+                    <button (click)="handleAction('back')" class="hover:bg-linear-to-r from-blue-950 to-blue-700 hover:text-white active:scale-95 transition cursor-pointer rounded-full"><mat-icon>arrow_back</mat-icon></button>
+                    <button  (click)="handleAction('close')"class="hover:bg-linear-to-r from-blue-950 to-blue-700  hover:text-white active:scale-95 transition cursor-pointer rounded-full"><mat-icon>close</mat-icon></button>
+                </div>
+                <div class="flex flex-col items-center justify-center">
                     <mat-card class="signup-page-card-title-card p-4 bg-linear-to-r from-blue-950 to-blue-700 flex items-center justify-center rounded-lg shadow-2xl">                            
                         <mat-icon class="signup-icon">code_blocks</mat-icon>
                     </mat-card>
                 </div>
             </mat-card-title>
-            <mat-card-subtitle class="signup-page-card-subtitle font-sans font-bold ">Create an Account</mat-card-subtitle>
+            <mat-card-subtitle class="signup-page-card-subtitle font-[sans-serif] font-bold ">Create an Account</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="flex flex-col space-y-3 w-full">
-            <p class="text-gray-500 text-[14px] font-sans flex items-center justify-center">Sign up to start reviewing your code with AI</p>
-            <p class="text-black font-bold text-[16px]">Full Name</p>
+            <p class="text-gray-500 text-[14px] font-[sans-serif] flex items-center justify-center">Sign up to start reviewing your code with AI</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Full Name</p>
             <mat-form-field appearance="outline" class="w-full">
-                <input matInput placeholder="Siripuram Niharika" class="w-full">
+                <input matInput placeholder="Enter full Name" class="w-full">
             </mat-form-field>
-            <p class="text-black font-bold text-[16px]">Email</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Email</p>
             <mat-form-field appearance="outline" class="w-full">
-                <input matInput placeholder="niharika@gmail.com" class="w-full">
+                <input matInput placeholder="Enter email address" class="w-full">
             </mat-form-field>
-            <p class="text-black font-bold text-[16px]">Contact Number</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Contact Number</p>
             <form>
                 <mat-form-field appearance="outline" class="w-full">
                     <span matTextPrefix>+91 &nbsp;</span>
-                    <input type="tel" matInput placeholder="7569981613">
+                    <input type="tel" matInput placeholder="Enter contact number">
                 </mat-form-field>
             </form>
-            <p class="text-black font-bold text-[16px]">Password</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Password</p>
             <mat-form-field appearance="outline" class="w-full">
                 <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'" />
                 <button
@@ -40,7 +44,7 @@
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
-            <p class="text-black font-bold text-[16px]">Select Security Question</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Select Security Question</p>
             <mat-form-field appearance="outline" class="w-full">
                 <mat-select [(value)]="selected">
                     <mat-option value="option">Select</mat-option>
@@ -56,14 +60,14 @@
                     <mat-option value="option10">What is your favorite subject related to programming?</mat-option>
                 </mat-select>
             </mat-form-field>
-            <p class="text-black font-bold text-[16px]">Security Question Answer</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Security Question Answer</p>
             <mat-form-field class="w-full" appearance="outline">
-                <input matInput placeholder="e.g.python">
+                <input matInput placeholder="Enter answer">
             </mat-form-field>
             <button matButton="filled" class="signup-page-signup-button w-full flex items-center">Sign Up</button>
             <div class="flex items-center justify-center">
                 <p>Already have an account?</p>
-                <button class=" font-bold bg-linear-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent" routerLink="/">Login</button>
+                <button class=" font-bold bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent hover:bg-blue-700 cursor-pointer" routerLink="/">Login</button>
             </div>
         </mat-card-content>
     </mat-card>
