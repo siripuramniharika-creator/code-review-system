@@ -26,7 +26,7 @@ export class Home {
   login() {
     if (this.email === 'admin@gmail.com' && this.password === '123456') {
       alert("Login successful");
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/utils']);
     } 
     else {
       alert("Invalid email or password");
