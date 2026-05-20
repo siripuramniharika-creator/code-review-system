@@ -1,49 +1,63 @@
-<div class="home-main flex font-[sans-serif] bg-linear-to-br from-purple-300 via-blue-400 to-indigo-500 min-h-screen items-center justify-center">
-    <mat-card class="home-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-2 space-y-2  w-112.5">
-        <mat-card-header>
-            <mat-card-title>
-                <div class="flex items-center justify-center">
-                    <mat-card class="home-page-card-title-card p-4 bg-linear-to-r from-blue-950 to-blue-700 flex items-center justify-center rounded-lg shadow-2xl">                            
-                        <mat-icon class="home-icon">code_blocks</mat-icon>
-                    </mat-card>
-                </div>
-            </mat-card-title>
-            <mat-card-subtitle class="home-page-card-subtitle font-[sans-serif] font-bold ">Welcome back</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="flex flex-col space-y-3 w-full">
-            <p class="text-gray-500 text-[14px] font-[sans-serif] flex items-center justify-center">Sign in to your AI Code Review account</p>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Username or Email</p>
-            <div class="home-page-username-form flex flex-col ">
-                <mat-form-field appearance="outline" class="w-full">
-                    <mat-label class="font-[sans-serif]">Username or Email</mat-label>
-                    <input matInput placeholder="Enter Username" [(ngModel)]="email" >
-                    <mat-hint class="italic text-[10px] font-bold">e.g.niharika@gmail.com</mat-hint>
-                </mat-form-field>
-            </div>
-            <div class="flex justify-between">
-                <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Password</p>
-                <button routerLink="/forgot-password"class="cursor-pointer "><p class="text-blue-500 font-bold text-[12px] ">Forgot password?</p></button>
-            </div>
-            <div class="home-page-password-form flex flex-col ">
-                <mat-form-field appearance="outline" class="w-full">
-                    <mat-label class="font-[sans-serif]">Enter your password</mat-label>
-                    <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'"  [(ngModel)]="password"/>
-                    <button
-                        matIconButton
-                        matSuffix
-                        (click)="clickEvent($event)"
-                        [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide()"
-                    >
-                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
-            </div>
-            <button matButton="filled" class="home-page-submit-button w-full flex items-center" (click)="login()">Submit</button>
-            <div class="flex items-center justify-center">
-                <p>Don't have an account?</p>
-                <button class=" font-bold bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent cursor-pointer" routerLink="/signup">Sign up</button>
-            </div>
-        </mat-card-content>
-    </mat-card>
-</div>
+@if(loading) {
+    <div class="fixed inset-0 flex items-center justify-center bg-white z-50">
+
+        <mat-spinner diameter="60"></mat-spinner>
+         <p class="mt-5 text-lg font-semibold text-blue-900">
+            Logging in...
+        </p>
+    </div>
+}
+@else {
+    <div class="home-main font-[sans-serif]  p-5 bg-blue-100 min-h-screen items-center justify-center">
+        <div class="home-header flex flex-col justify-center items-center ">
+            <mat-card class="home-header-card p-4 bg-linear-to-r from-blue-950 to-blue-700 items-center justify-center rounded-lg  shadow-2xl">
+                <mat-icon class="header-icon text-white">code_blocks</mat-icon>
+            </mat-card>
+            <h1 class="bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent items-center justify-center font-bold font-[sans-serif] text-4xl mt-4 ">AI Code Review Assistant</h1>
+            <p class="text-gray-800 text-[14px] font-[sans-serif] flex items-center justify-center mt-3">Intelligent Code Analysis Platform</p>
+            <p class="text-gray-500 text-[14px] font-[sans-serif] flex items-center justify-center mt-2">Leverage AI to analyze, review, and enhance code quality with actionable insights.</p>
+        </div>
+        <div class="home-content mt-5 flex items-center justify-center">
+            <mat-card class="home-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-2 space-y-2  w-112.5">
+                <mat-card-header>
+                    <mat-card-subtitle class="home-page-card-subtitle font-[sans-serif] font-bold ">Welcome back</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="flex flex-col space-y-3 w-full">
+                    <p class="text-gray-500 text-[14px] font-[sans-serif] flex items-center justify-center">Sign in to your AI Code Review account</p>
+                    <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Username or Email</p>
+                    <div class="home-page-username-form flex flex-col ">
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label class="font-[sans-serif]">Username or Email</mat-label>
+                            <input matInput placeholder="Enter Username" [(ngModel)]="email" >
+                            <mat-hint class="italic text-[10px] font-bold">e.g.niharika@gmail.com</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex justify-between">
+                        <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Password</p>
+                        <button routerLink="/forgot-password"class="cursor-pointer "><p class="text-blue-500 font-bold text-[12px] ">Forgot password?</p></button>
+                    </div>
+                    <div class="home-page-password-form flex flex-col ">
+                        <mat-form-field appearance="outline" class="w-full">
+                            <mat-label class="font-[sans-serif]">Enter your password</mat-label>
+                            <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'"  [(ngModel)]="password"/>
+                            <button
+                                matIconButton
+                                matSuffix
+                                (click)="clickEvent($event)"
+                                [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide()"
+                            >
+                                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <button matButton="filled" class="home-page-submit-button w-full flex items-center" (click)="login()">Submit</button>
+                    <div class="flex items-center justify-center">
+                        <p>Don't have an account?</p>
+                        <button class=" font-bold bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent cursor-pointer" routerLink="/signup">Sign up</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+}

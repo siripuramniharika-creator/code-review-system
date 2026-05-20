@@ -1,4 +1,15 @@
 .home-main{
+    .home-header {
+        .home-header-card{
+            height:60px;
+            width:60px;
+            .header-icon{
+                font-size: 25px !important;
+                font-weight: bold !important;
+                color: white !important;
+            }
+        }
+    }
     .home-page-card{
         .home-page-card-title-card{
             .home-icon{

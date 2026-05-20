@@ -1,24 +1,24 @@
-.dashboard-main{
-    .dashboard-header{
-        .welcome-card {
+.code-review-main{
+    .code-review-header{
+        .welcome-card{
             .welcome-card-title{
                 font-size: 24px;
                 font-family: sans-serif;
                 color: white;
             }
             .welcome-card-subtitle{
-                font-size: 14px;
+                font-size: 16px;
                 font-family: sans-serif;
                 color: white;
             }
         }
-        
+
     }
-    .dashboard-content{
-        .dashboard-codequality-card{
+    .code-review-content {
+        .code-review-codequality-card{
             background-color: white;
-            .dashboard-codequality-card-title{
-                font-size: 18px;
+            .code-review-codequality-card-title{
+                      font-size: 18px;
                 font-family: sans-serif;
                 font-weight: bold;
                 background: linear-gradient(to right, #172554, #1d4ed8);
@@ -26,20 +26,20 @@
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
-            .dashboard-codequality-card-subtitle{
+            .code-review-codequality-card-subtitle{
                 font-size: 14px;
                 font-family: sans-serif;
                 color: green;
             }
-            .dashboard-codequality-card-content{
+            .code-review-codequality-card-content{
                 p{
                     margin: 0 !important;
                 }
             }
         }
-        .dashboard-securityscore-card{
+        .code-review-securityscore-card{
             background-color: white;
-            .dashboard-securityscore-card-title{
+            .code-review-securityscore-card-title{
                 font-size: 18px;
                 font-family: sans-serif;
                 font-weight: bold;
@@ -48,20 +48,20 @@
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
-            .dashboard-securityscore-card-subtitle{
+            .code-review-securityscore-card-subtitle{
                 font-size: 14px;
                 font-family: sans-serif;
-                color: blue;
+                color: red;
             }
-            .dashboard-securityscore-card-content{
+            .code-review-securityscore-card-content{
                 p{
                     margin: 0 !important;
                 }
             }
         }
-        .dashboard-performance-card{
+        .code-review-performance-card {
             background-color: white;
-            .dashboard-performance-card-title{
+            .code-review-performance-card-title{
                 font-size: 18px;
                 font-family: sans-serif;
                 font-weight: bold;
@@ -70,12 +70,12 @@
                 -webkit-text-fill-color: transparent;
                 background-clip: text;
             }
-            .dashboard-performance-card-subtitle{
+            .code-review-performance-card-subtitle{
                 font-size: 14px;
                 font-family: sans-serif;
-                color: orange;
+                color: brown;
             }
-            .dashboard-performance-card-content{
+            .code-review-performance-card-content{
                 p{
                     margin: 0 !important;
                 }

@@ -1,0 +1,17 @@
+.history-main{
+    .history-header{
+        .history-card {
+            .history-card-title{
+                font-size: 24px;
+                font-family: sans-serif;
+                color: white;
+            }
+            .history-card-subtitle{
+                font-size: 14px;
+                font-family: sans-serif;
+                color: white;
+            }
+        }
+    }
+
+}

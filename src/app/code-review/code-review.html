@@ -1,0 +1,317 @@
+<div class="code-review-main font-[sans-serif] p-3">
+    <div class="code-review-header  flex justify-between items-center ">
+        <mat-card class="welcome-card shadow-none flex bg-linear-to-r from-blue-950 to-blue-700 p-5 w-2xl">
+            <mat-card-title class="welcome-card-title">Code Review Results</mat-card-title>
+            <mat-card-subtitle class="welcome-card-subtitle">{{ selected }} • {{ currentDate }}</mat-card-subtitle>
+        </mat-card>
+        <button class="save-review  text-black p-3  bg-white cursor-pointer font-bold text-[16px] font-[sans-serif] rounded-md ">Save Review</button>
+        <button (click)="downloadReport()" class="download-report bg-linear-to-r from-blue-950 to-blue-700 text-white p-3 font-[sans-serif] font-bold cursor-pointer text-[16px] rounded-md">Download Report</button>
+    </div>
+    <div class="code-review-content mt-5">
+       <div class=" grid grid-cols-3 gap-6">
+            <mat-card class="code-review-codequality-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="code-review-codequality-card-title">Code Quality Score</mat-card-title>
+                    <mat-card-subtitle class="code-review-codequality-card-subtitle"><mat-icon class="code-review-codequality-card-icon">trending_up</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="code-review-codequality-card-content">
+                    <p class="text-2xl text-green-600">{{qualityScore}}/100</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mt-6">
+                        <div
+                            class="bg-green-500 h-3 rounded-full transition-all duration-700"
+                            [style.width.%]="qualityScore">
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="code-review-securityscore-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="code-review-securityscore-card-title">Security Score</mat-card-title>
+                    <mat-card-subtitle class="code-review-securityscore-card-subtitle"><mat-icon class="code-review-securityscore-card-icon">shield</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="code-review-securityscore-card-content">
+                    <p class="text-2xl text-red-600">{{securityScore}}/100</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mt-6">
+                        <div
+                            class="bg-red-500 h-3 rounded-full transition-all duration-700"
+                            [style.width.%]="securityScore">
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+             <mat-card class="code-review-performance-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="code-review-performance-card-title">Performance Score</mat-card-title>
+                    <mat-card-subtitle class="code-review-performance-card-subtitle"><mat-icon class="code-review-performance-card-icon">electric_bolt</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="code-review-performance-card-content">
+                    <p class="text-2xl text-blue-600">{{performanceScore}}/100</p>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mt-6">
+                        <div
+                            class="bg-blue-500 h-3 rounded-full transition-all duration-700"
+                            [style.width.%]="performanceScore">
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="bg-white rounded-3xl shadow-md mt-10 overflow-hidden">
+            <div class="bg-red-50 p-6 border-b">
+                <h1 class="text-xl font-bold font-[sans-serif] text-gray-800">
+                Code Issues
+                </h1>
+                <p class="text-gray-500 mt-2">
+                Found 5 issues in your code
+                </p>
+            </div>
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+
+                        <th class="text-left p-4 ">Line Number</th>
+                        <th class="text-left p-4 font-">Issue Description</th>
+                        <th class="text-left p-4 ">Severity Level</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let issue of issues"
+                        class="border-t">
+
+                        <!-- Line -->
+                        <td class="p-4 text-blue-600 font-semibold">
+
+                        Line {{issue.line}}
+
+                        </td>
+
+                        <!-- Description -->
+                        <td class="p-4">
+
+                        {{issue.description}}
+
+                        </td>
+
+                        <!-- Severity -->
+                        <td class="p-4">
+
+                        <span
+                            class="px-3 py-1 rounded-full text-sm font-medium"
+
+                            [ngClass]="{
+
+                            'bg-yellow-100 text-yellow-700':
+                                issue.severity === 'Warning',
+
+                            'bg-red-100 text-red-700':
+                                issue.severity === 'Critical',
+
+                            'bg-blue-100 text-blue-700':
+                                issue.severity === 'Info'
+
+                            }">
+
+                            {{issue.severity}}
+
+                        </span>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="bg-white rounded-3xl shadow-md mt-10 overflow-hidden">
+            <div class="bg-yellow-50 p-6 border-b">
+                <h1 class="text-xl font-bold">
+                AI Suggestions
+                </h1>
+                <p class="text-gray-500 mt-2">
+                Recommended improvements for your code
+                </p>
+            </div>
+            <div class="p-8 space-y-8">
+
+                <div
+                    *ngFor="let suggestion of suggestions; let i = index"
+                    class="border rounded-2xl p-6">
+
+                    <!-- Title -->
+                    <div class="flex items-center gap-4">
+
+                        <div
+                        class="bg-blue-100 text-blue-700
+                        w-10 h-10 rounded-full
+                        flex items-center justify-center
+                        font-bold">
+
+                        {{i + 1}}
+
+                        </div>
+
+                        <h2 class="text-lg font-semibold">
+
+                        {{suggestion.title}}
+
+                        </h2>
+
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-gray-600 mt-4 leading-8">
+
+                        {{suggestion.description}}
+
+                    </p>
+
+                    <!-- Code Comparison -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+
+                        <!-- Original -->
+                        <div>
+
+                            <p class="text-red-500 font-semibold mb-2">
+                                Original Code
+                            </p>
+
+                            <pre
+                                class="bg-black text-white
+                                p-4 rounded-xl overflow-auto">
+
+                                {{suggestion.originalCode}}
+
+                            </pre>
+
+                        </div>
+
+                                <!-- Improved -->
+                        <div>
+
+                            <p class="text-green-500 font-semibold mb-2">
+                                Improved Code
+                            </p>
+
+                            <pre
+                                class="bg-black text-white
+                                p-4 rounded-xl overflow-auto">
+
+                                {{suggestion.improvedCode}}
+
+                            </pre>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-md mt-10 p-8">
+
+            <!-- Heading -->
+            <h1 class="text-xl font-bold text-gray-800">
+
+                Code Comparison View
+
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+
+                Side-by-side comparison of original and AI-improved code
+
+            </p>
+
+            <!-- Comparison Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+
+                <!-- Original Code -->
+                <div>
+
+                    <div
+                        class="border border-red-200
+                        bg-red-50
+                        rounded-2xl
+                        p-4 mb-4">
+
+                            <h2 class="text-red-500 font-semibold flex items-center gap-2">
+
+                            <mat-icon class="text-red-500">
+                                code
+                            </mat-icon>
+
+                            Original Code (Left)
+
+                            </h2>
+
+                    </div>
+
+                    <pre
+                        class="bg-black text-white
+                        p-6 rounded-2xl
+                        overflow-auto min-h-45">
+
+                        {{comparison.originalCode}}
+
+                    </pre>
+
+                </div>
+
+                    <!-- Improved Code -->
+                <div>
+
+                    <div
+                        class="border border-green-200
+                        bg-green-50
+                        rounded-2xl
+                        p-4 mb-4">
+
+                            <h2 class="text-green-600 font-semibold flex items-center gap-2">
+
+                            <mat-icon class="text-green-600">
+                                auto_fix_high
+                            </mat-icon>
+
+                            AI-Improved Code (Right)
+
+                            </h2>
+
+                    </div>
+
+                        <pre
+                            class="bg-black text-white
+                            p-6 rounded-2xl
+                            overflow-auto min-h-45">
+
+                            {{comparison.improvedCode}}
+
+                        </pre>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="flex justify-center gap-6 mt-10">
+
+                <button
+                    (click)="reviewAnother()" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl">
+
+                    Review Another File
+
+                </button>
+
+                <button
+                    (click)="goDashboard()" class="border border-gray-300 px-8 py-4 rounded-xl bg-white">
+
+                    Back to Dashboard
+
+                </button>
+
+        </div>
+    </div>
+</div>

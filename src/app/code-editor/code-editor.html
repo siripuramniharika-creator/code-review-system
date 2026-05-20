@@ -1,0 +1,47 @@
+<div class="code-editor-main font-[sans-serif] min-h-screen p-3">
+    <div class="code-editor-header shadow-md  w-full ">
+        <mat-card class="code-editor-card shadow-none flex bg-linear-to-r from-blue-950 to-blue-700 p-5">
+            <mat-card-title class="code-editor-card-title">Code Editor</mat-card-title>
+            <mat-card-subtitle class="code-editor-card-subtitle">Paste your code or upload a file for AI-powered analysis</mat-card-subtitle>
+        </mat-card>
+    </div>
+    <div class="code-editor-content mt-5 flex flex-col">
+        <div class="bg-white rounded-3xl shadow-sm p-8  border border-gray-100">
+
+            <h2 class="text-2xl font-semibold from-blue-950 to-blue-700 bg-clip-text text-transparent bg-linear-to-r">
+                Submit Code for Review
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                Choose your programming language and paste your code snippet or upload a file to get started with the AI code review process.
+            </p>
+            <p class="text-black font-bold mt-5">Programming Language</p>
+        <mat-form-field appearance="outline" class="w-3xs mt-3">
+            <mat-select [(value)]="selected" placeholder="Select Programming Language">
+                <mat-option value="Java">Java</mat-option>
+                <mat-option value="Python">Python</mat-option>
+                <mat-option value="JavaScript">JavaScript</mat-option>
+                <mat-option value="C++">C++</mat-option>
+                <mat-option value="C#">C#</mat-option> 
+                <mat-option value="Go">Go</mat-option>
+                <mat-option value="Rust">Rust</mat-option>
+                <mat-option value="PHP">PHP</mat-option>
+                <mat-option value="Ruby">Ruby</mat-option>
+                <mat-option value="Typescript">Typescript</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <p class="text-black font-bold mt-3">Code</p>
+        <textarea [(ngModel)]="code" class="w-full h-64 mt-3 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your code here..."></textarea>
+        <p class="text-black font-bold mt-3">Or Upload a File</p>
+        <input type="file"  (change)="onFileSelected($event)" #fileInput hidden>
+        <button mat-stroked-button type="button" (click)="fileInput.click()"> Upload File </button>
+        <p class="text-gray-500 text-sm mt-2">Supported formats: .java, .py, .js, .cpp, .cs, .go, .rs, .php, .rb, .ts</p>
+        <div class="flex mt-5">
+            <button class="bg-linear-to-r from-blue-950 to-blue-700 text-white p-3 rounded-md w-3xs font-[sans-serif] font-bold cursor-pointer" (click)="startAnalysis()">Analyze Code</button>
+            <button class="bg-gray-300 text-gray-700 p-3 rounded-md w-3xs font-[sans-serif] font-bold cursor-pointer ml-4" (click)="goBack()">Cancel</button>
+        </div>
+        </div>
+        
+    </div>
+</div>
+

@@ -1,7 +1,131 @@
-<div class="dashboard-main flex font-[sans-serif] ">
-    <div class="dashboard-header shadow-md  w-full">
-        <mat-card class="welcome-card shadow-none flex bg-linear-to-r from-blue-950 to-blue-700 p-3">
-            <mat-card-title>Welcome back,{{name}}</mat-card-title>
+<div class="dashboard-main  font-[sans-serif] p-3">
+    <div class="dashboard-header shadow-md  w-full ">
+        <mat-card class="welcome-card shadow-none flex bg-linear-to-r from-blue-950 to-blue-700 p-5">
+            <mat-card-title class="welcome-card-title">Welcome back, {{name}}!</mat-card-title>
+            <mat-card-subtitle class="welcome-card-subtitle">Here's an overview of your code review activity</mat-card-subtitle>
         </mat-card>
     </div>
+    <div class="dashboard-content mt-5">
+        <div class=" grid grid-cols-3 gap-6">
+            <mat-card class="dashboard-codequality-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="dashboard-codequality-card-title">Avg Code Quality</mat-card-title>
+                    <mat-card-subtitle class="dashboard-codequality-card-subtitle"><mat-icon class="dashboard-codequality-card-icon">trending_up</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="dashboard-codequality-card-content">
+                    <p class="text-2xl text-red-600">{{avgQuality}}/100</p>
+                    <p class="text-sm text-gray-500">Based on {{reviews.length}} reviews</p>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="dashboard-securityscore-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="dashboard-securityscore-card-title">Avg Security Score</mat-card-title>
+                    <mat-card-subtitle class="dashboard-securityscore-card-subtitle"><mat-icon class="dashboard-securityscore-card-icon">shield</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="dashboard-securityscore-card-content">
+                    <p class="text-2xl text-red-600">{{avgSecurity}}/100</p>
+                    <p class="text-sm text-gray-500">Security analysis</p>
+                </mat-card-content>
+            </mat-card>
+             <mat-card class="dashboard-performance-card shadow-md  p-5">
+                <div class="flex justify-between">
+                    <mat-card-title class="dashboard-performance-card-title">Avg Performance Score</mat-card-title>
+                    <mat-card-subtitle class="dashboard-performance-card-subtitle"><mat-icon class="dashboard-performance-card-icon">electric_bolt</mat-icon></mat-card-subtitle>
+                </div>
+                <br>
+                <mat-card-content class="dashboard-performance-card-content">
+                    <p class="text-2xl text-red-600">{{avgPerformance}}/100</p>
+                    <p class="text-sm text-gray-500">Performance metrics</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <button class="bg-linear-to-r from-blue-950 to-blue-700 text-white p-3 rounded-md w-3xs mt-3 font-[sans-serif] font-bold cursor-pointer" (click)="openCodeEditor()">Start New Review</button>
+        <div class="bg-white rounded-3xl shadow-sm p-10 mt-5 border border-gray-100">
+
+        <h2 class="text-2xl font-semibold from-blue-950 to-blue-700 bg-clip-text text-transparent bg-linear-to-r">
+            Recent Code Reviews
+        </h2>
+
+        <p class="text-gray-500 mt-2">
+            Your latest code analysis results
+        </p>
+        <div *ngIf="reviews.length === 0"
+            class="flex flex-col items-center justify-center py-24">
+
+            <div class="bg-gray-100 p-6 rounded-full">
+                <mat-icon class="text-5xl text-gray-500">code</mat-icon>
+            </div>
+
+            <h3 class="text-xl text-gray-700 mt-6">
+                No reviews yet
+            </h3>
+
+            <p class="text-gray-400 mt-2">
+                Start your first code review to see results here!
+            </p>
+
+        </div>
+        <div *ngIf="reviews.length > 0" class="mt-8 space-y-5">
+
+            <div *ngFor="let review of reviews"
+                class="bg-white border border-gray-100 rounded-2xl p-6 flex justify-between items-center shadow-sm hover:shadow-md transition-all duration-300">
+
+                <!-- Left Side -->
+                <div class="flex items-center gap-5">
+
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-linear-to-r from-blue-950 to-blue-700 flex items-center justify-center">
+
+                        <mat-icon class="text-white">code</mat-icon>
+
+                    </div>
+
+                    <div>
+
+                        <h3 class="text-2xl font-semibold text-gray-800">
+                            {{review.language}} Code Review
+                        </h3>
+
+                        <p class="text-gray-500 flex items-center gap-1 mt-1">
+                            <mat-icon class="text-base">calendar_today</mat-icon>
+                            {{review.date}}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- Right Side Scores -->
+                <div class="flex gap-10 text-center">
+
+                    <div>
+                        <p class="text-sm text-gray-400">Quality</p>
+                        <p class="text-2xl font-bold text-green-600">
+                            {{review.quality}}
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-400">Security</p>
+                        <p class="text-2xl font-bold text-blue-600">
+                            {{review.security}}
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-gray-400">Performance</p>
+                        <p class="text-2xl font-bold text-amber-600">
+                            {{review.performance}}
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
+

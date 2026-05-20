@@ -1,0 +1,12 @@
+.utils-main{
+    .utils-header{
+        .utils-card{
+            border: 0px !important;
+            background-color: white;
+        }   
+        .login-icon{
+            font-size: 24px;
+            color: white;
+        }
+    }
+}

@@ -1,1 +1,97 @@
-<p>profile works!</p>
+<div class="profile-main font-[sans-serif] p-3">
+    <div class="profile-header shadow-md  w-full ">
+        <mat-card class="profile-card shadow-none flex bg-linear-to-r from-blue-950 to-blue-700 p-5">
+            <mat-card-title class="profile-card-title">Profile</mat-card-title>
+            <mat-card-subtitle class="profile-card-subtitle">Your account information and statistics</mat-card-subtitle>
+        </mat-card>
+    </div>
+    <div class="profile-content mt-5">
+        <div class="bg-white rounded-3xl shadow-sm p-10 mt-10 border border-gray-100">
+            <h2 class="text-2xl font-semibold from-blue-950 to-blue-700 bg-clip-text text-transparent bg-linear-to-r">
+                Account Information
+            </h2>
+            <p class="text-gray-500 mt-2">
+                Your Personal details
+            </p>
+            <div class=" flex flex-col mt-5">
+                <mat-card class="profile-info-card  shadow-blue-500 bg-white p-5 " appearance="outlined">
+                    <div class="flex items  center">
+                        <div class="bg-linear-to-r from-blue-950 to-blue-700 p-3 rounded-xl flex items-center justify-center">
+                            <mat-icon class="login-icon text-white">person</mat-icon>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-xl font-semibold text-gray-700">Full Name</p>
+                            <p class="text-sm text-gray-500">{{ userProfile.name }}</p>
+                        </div>
+                    </div>
+                </mat-card> 
+                <mat-card class="profile-email-info-card bg-white p-5 mt-2" appearance="outlined">
+                    <div class="flex items  center">
+                        <div class="bg-linear-to-r from-blue-700 to-blue-200 p-3 rounded-xl flex items-center justify-center">
+                            <mat-icon class="email-icon text-white">email</mat-icon>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-xl font-semibold text-gray-700">Email</p>
+                            <p class="text-sm text-gray-500">{{ userProfile.email }}</p>
+                        </div>
+                    </div>
+                </mat-card> 
+                <mat-card class="profile-username-info-card   bg-white p-5 mt-2" appearance="outlined">
+                    <div class="flex items  center">
+                        <div class="bg-linear-to-r from-black to-gray-500 p-3 rounded-xl flex items-center justify-center">
+                            <mat-icon class="username-icon text-white">person</mat-icon>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-xl font-semibold text-gray-700">Username</p>
+                            <p class="text-sm text-gray-500">{{ userProfile.username }}</p>
+                        </div>
+                    </div>
+                </mat-card> 
+                <mat-card class="profile-member-info-card   bg-white p-5 mt-2" appearance="outlined">
+                    <div class="flex items  center">
+                        <div class="bg-linear-to-r from-green-200 to-green-600 p-3 rounded-xl flex items-center justify-center">
+                            <mat-icon class="member-icon text-white">person</mat-icon>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-xl font-semibold text-gray-700">Member Since</p>
+                            <p class="text-sm text-gray-500">{{ userProfile.memberSince }}</p>
+                        </div>
+                    </div>
+                </mat-card> 
+            </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-sm p-10 mt-10 border border-gray-100">
+
+            <h2 class="text-2xl font-semibold from-blue-950 to-blue-700 bg-clip-text text-transparent bg-linear-to-r">
+                Code Review Statistics
+            </h2>
+
+            <p class="text-gray-500 mt-2">
+                Your performance metrics
+            </p>
+            <div class="mt-5 grid grid-cols-2 gap-6">
+                <mat-card class="total-reviews-card bg-linear-to-r from-blue-950 to-blue-700 p-5">
+                    <mat-card-title class="total-reviews-card-title ">
+                        Total Reviews Done
+                    </mat-card-title>
+                    <br/>
+                    <mat-card-content class="total-reviews-card-content">
+                        <p class="text-2xl text-white">{{ reviews.length }}</p>
+                        <p class="text-sm text-white">Total code reviews you've completed</p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="average-codescore-card bg-linear-to-r from-green-300 to-green-600 p-5">
+                    <mat-card-title class="average-codescore-card-title">
+                        Average Code Score
+                    </mat-card-title>
+                    <br/>
+                    <mat-card-content class="average-codescore-card-content">
+                        <p class="text-2xl text-white">0/100</p>
+                        <p class="text-sm text-white">Average code score across all reviews</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            
+        </div>
+    </div>
+</div>

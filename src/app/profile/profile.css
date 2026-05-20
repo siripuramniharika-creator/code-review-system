@@ -1,0 +1,80 @@
+.profile-main{
+    .profile-header{
+        .profile-card{
+            .profile-card-title{
+                font-size: 24px;
+                font-family: sans-serif;
+                color: white;
+            }
+            .profile-card-subtitle{
+                font-size: 14px;
+                font-family: sans-serif;
+                color: white;
+            }
+        }
+    }
+    .profile-content{
+        .profile-info-card {
+            background-color: white;
+            border-color: gray !important;
+            border-width: 2px !important;
+            .login-icon{
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .profile-email-info-card {
+            background-color: white;
+            border-color: rgb(98, 138, 226)!important;
+            border-width: 2px !important;
+            .email-icon{
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .profile-username-info-card {
+            background-color: white;
+            border-color: gray !important;
+            border-width: 2px !important;
+            .username-icon{
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .profile-member-info-card{
+            background-color: white;
+            border-color: rgb(38, 133, 38)!important;
+            border-width: 2px !important;
+            .member-icon{
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .total-reviews-card{
+            .total-reviews-card-title{
+                font-size: 18px;
+                font-family: sans-serif;
+                font-weight: bold;
+                color: white;
+            }
+            .total-reviews-card-content{
+                font-size: 14px;
+                font-family: sans-serif;
+                color: white;
+            }
+        }
+        .average-codescore-card{
+            .average-codescore-card-title{
+                font-size: 18px;
+                font-family: sans-serif;
+                font-weight: bold;
+                color: white;
+            }
+            .average-codescore-card-content{
+                font-size: 14px;
+                font-family: sans-serif;
+                color: white;
+            }
+        }
+    }
+}
