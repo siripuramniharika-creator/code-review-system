@@ -297,20 +297,26 @@
             </div>
         </div>
         <div class="flex justify-center gap-6 mt-10">
+            <button
+                (click)="modifyCode()"
+                class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl">
 
-                <button
-                    (click)="reviewAnother()" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl">
+                Modify your code
+            </button>
 
-                    Review Another File
+            <button
+                (click)="reviewAnother()" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-xl">
 
-                </button>
+                Review Another File
 
-                <button
-                    (click)="goDashboard()" class="border border-gray-300 px-8 py-4 rounded-xl bg-white">
+            </button>
 
-                    Back to Dashboard
+            <button
+                (click)="goDashboard()" class="border border-gray-300 px-8 py-4 rounded-xl bg-white">
 
-                </button>
+                Back to Dashboard
+
+            </button>
 
         </div>
     </div>

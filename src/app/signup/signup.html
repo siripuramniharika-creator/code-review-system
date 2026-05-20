@@ -16,24 +16,40 @@
         </mat-card-header>
         <mat-card-content class="flex flex-col space-y-3 w-full">
             <p class="text-gray-500 text-[14px] font-[sans-serif] flex items-center justify-center">Sign up to start reviewing your code with AI</p>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Full Name</p>
-            <mat-form-field appearance="outline" class="w-full">
-                <input matInput placeholder="Enter full Name" class="w-full">
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Full Name <span class="text-red-500">*</span></p>
+            <mat-form-field appearance="outline" class="w-full" [class.mat-form-field-invalid]="nameError">
+                <mat-label class="font-[sans-serif]">Enter Full Name</mat-label>
+                <input matInput  class="w-full " [(ngModel)]="name" required>
+                <mat-error *ngIf="nameError">
+                    {{ nameError }}
+                </mat-error>
             </mat-form-field>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Email</p>
-            <mat-form-field appearance="outline" class="w-full">
-                <input matInput placeholder="Enter email address" class="w-full">
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Email <span class="text-red-500">*</span></p>
+            <mat-form-field appearance="outline" class="w-full" [class.mat-form-field-invalid]="emailError">
+                <mat-label class="font-[sans-serif]">Enter Email</mat-label>
+                <input matInput  class="w-full" [(ngModel)]="email" required>
+                <mat-error *ngIf="emailError">
+                    {{ emailError }}
+                </mat-error>
             </mat-form-field>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Contact Number</p>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Contact Number <span class="text-red-500">*</span></p>
             <form>
-                <mat-form-field appearance="outline" class="w-full">
+                <mat-form-field appearance="outline" class="w-full" [class.mat-form-field-invalid]="contactError">
                     <span matTextPrefix>+91 &nbsp;</span>
-                    <input type="tel" matInput placeholder="Enter contact number">
+                    <mat-label class="font-[sans-serif]">Enter Contact Number</mat-label>
+                    <input type="tel" matInput [(ngModel)]="contact" required>
+                    <mat-error *ngIf="contactError">
+                        {{ contactError }}
+                    </mat-error>
                 </mat-form-field>
             </form>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Password</p>
-            <mat-form-field appearance="outline" class="w-full">
-                <input matInput placeholder="Enter Password" [type]="hide() ? 'password' : 'text'" />
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Password <span class="text-red-500">*</span></p>
+            <mat-form-field appearance="outline" class="w-full" [class.mat-form-field-invalid]="passwordError">
+                <mat-label class="font-[sans-serif]">Enter Password</mat-label>
+                <input matInput  [type]="hide() ? 'password' : 'text'"  [(ngModel)]="password" required />
+                <mat-error *ngIf="passwordError">
+                    {{ passwordError }}
+                </mat-error>
                 <button
                     matIconButton
                     matSuffix
@@ -44,10 +60,10 @@
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Select Security Question</p>
-            <mat-form-field appearance="outline" class="w-full">
-                <mat-select [(value)]="selected">
-                    <mat-option value="option">Select</mat-option>
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Select Security Question <span class="text-red-500">*</span></p>
+            <mat-form-field appearance="outline" class="w-full" [class.mat-form-field-invalid]="securityQuestionError">
+                <mat-label class="font-[sans-serif]">Select a security question</mat-label>
+                <mat-select [(value)]="selected" [(ngModel)]="securityQuestion" required>  
                     <mat-option value="option1">What was the first programming language you learned?</mat-option>
                     <mat-option value="option2">What is your favorite programming language?</mat-option>
                     <mat-option value="option3">Which code editor do you use the most?</mat-option>
@@ -59,12 +75,28 @@
                     <mat-option value="option9">What type of applications do you like to build the most?</mat-option>
                     <mat-option value="option10">What is your favorite subject related to programming?</mat-option>
                 </mat-select>
+                <mat-error *ngIf="securityQuestionError">
+                    {{ securityQuestionError }}
+                </mat-error>
             </mat-form-field>
-            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Security Question Answer</p>
-            <mat-form-field class="w-full" appearance="outline">
-                <input matInput placeholder="Enter answer">
+            <p class="font-bold text-[14px]  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">Security Question Answer <span class="text-red-500">*</span></p>
+            <mat-form-field class="w-full" appearance="outline" [class.mat-form-field-invalid]="securityAnswerError">
+                <mat-label class="font-[sans-serif]">Enter Answer</mat-label>
+                <input matInput  [(ngModel)]="securityAnswer" required>
+                <mat-error *ngIf="securityAnswerError">
+                    {{ securityAnswerError }}
+                </mat-error>
             </mat-form-field>
-            <button matButton="filled" class="signup-page-signup-button w-full flex items-center">Sign Up</button>
+            <button matButton="filled" class="signup-page-signup-button w-full flex items-center" (click)="signup() ">Sign Up</button>
+            <div *ngIf="loading" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+
+                <mat-spinner diameter="60"></mat-spinner>
+
+                <p class="mt-5 text-lg font-semibold text-blue-900">
+                    Creating your account...
+                </p>
+
+            </div>
             <div class="flex items-center justify-center">
                 <p>Already have an account?</p>
                 <button class=" font-bold bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent hover:bg-blue-700 cursor-pointer" routerLink="/">Login</button>

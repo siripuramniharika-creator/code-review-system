@@ -13,10 +13,12 @@
             }
         }
     }
-}
-::ng-deep .mat-mdc-select-placeholder {
-  font-family: sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: #6b7280;
+    .code-editor-content {
+        .select-label{
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+    }
 }

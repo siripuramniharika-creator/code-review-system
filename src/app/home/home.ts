@@ -25,17 +25,48 @@ export class Home {
   constructor(private router:Router, private cdr: ChangeDetectorRef){}
   email: string = '';
   password: string = '';
+  emailError = '';
+  passwordError = '';
+  loginError = '';
   login() {
-    if (this.email === 'admin@gmail.com' && this.password === '123456') {
-     this.loading = true;  
-      this.cdr.detectChanges(); 
-      setTimeout(() => { 
-            
-        this.router.navigate(['/utils']);
-      }, 5000);
-    } 
-    else {
-      alert("Invalid email or password");
+
+    // reset errors
+    this.emailError = '';
+    this.passwordError = '';
+    this.loginError = '';
+
+    // empty email validation
+    if (!this.email) {
+      this.emailError = 'Email is required';
     }
+
+    // empty password validation
+    if (!this.password) {
+      this.passwordError = 'Password is required';
+    }
+
+    // stop if empty fields
+    if (this.emailError || this.passwordError) {
+      return;
+    }
+
+    // invalid credentials
+    if (
+      this.email !== 'admin@gmail.com' ||
+      this.password !== '123456'
+    ) {
+
+      this.loginError = 'Invalid email or password';
+      return;
+    }
+
+    // SUCCESS LOGIN
+    this.loading = true;
+
+    setTimeout(() => {
+
+      this.router.navigate(['/utils']);
+
+    }, 4000);
   }
 }

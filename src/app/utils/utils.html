@@ -8,7 +8,7 @@
                 </div>
 
                 <span class="text-2xl font-semibold  bg-linear-to-r from-blue-950 to-blue-700 bg-clip-text text-transparent">
-                    AI Code Review
+                    AI Code Review Assistant
                 </span>
 
             </div>
@@ -36,20 +36,21 @@
             </div>
         </mat-card>
     </div>
-        <div class="p-6">
+    <div class="p-6">
 
-        <app-dashboard *ngIf="currentPage === 'dashboard'" (startReview)="currentPage='code-editor'"></app-dashboard>
+        <app-dashboard *ngIf="currentPage === 'dashboard'" (startReview)="goToEditor(false)"></app-dashboard>
 
-        <app-history *ngIf="currentPage === 'history'" (startReview)="currentPage='code-editor'"></app-history>
+        <app-history *ngIf="currentPage === 'history'" (startReview)="goToEditor(false)"></app-history>
 
         <app-profile *ngIf="currentPage === 'profile'"></app-profile>
 
-        <app-code-editor *ngIf="currentPage === 'code-editor'" (cancelReview)="currentPage='dashboard'" (analyzeCode)="startAnalysis($event)"></app-code-editor>
+        <app-code-editor *ngIf="currentPage === 'code-editor'" [code]="editorCode"   [language]="selected" (cancelReview)="currentPage='dashboard'" (analyzeCode)="startAnalysis($event)"></app-code-editor>
 
         <app-analyzecode *ngIf="currentPage === 'analyze-code'" (reviewCompleted)="currentPage='code-review'"></app-analyzecode>
         
-        <app-code-review *ngIf="currentPage === 'code-review'" [selected]="selected" (anotherReview)="currentPage='code-editor'" (backDashboard)="currentPage='dashboard'"></app-code-review>
+        <app-code-review *ngIf="currentPage === 'code-review'" [selected]="selected" (anotherReview)="goToEditor(false)" (modify)="goToEditor(true)" (backDashboard)="currentPage='dashboard'"></app-code-review>
     </div>
 </div>
+
 
 

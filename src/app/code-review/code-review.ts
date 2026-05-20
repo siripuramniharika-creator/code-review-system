@@ -12,6 +12,7 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrl: './code-review.css',
 })
 export class CodeReview {
+  @Output() modify = new EventEmitter<void>();
   @Output() anotherReview = new EventEmitter<void>();
   @Output() backDashboard = new EventEmitter<void>();
   @Input() selected = '';
@@ -177,6 +178,9 @@ export class CodeReview {
   // AI improvements applied based on suggestions above`
 
   };
+  modifyCode() {
+    this.modify.emit();
+  }
   reviewAnother() {
 
     this.anotherReview.emit();

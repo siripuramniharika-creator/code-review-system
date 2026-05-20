@@ -17,13 +17,14 @@
             </p>
             <p class="text-black font-bold mt-5">Programming Language</p>
         <mat-form-field appearance="outline" class="w-3xs mt-3">
-            <mat-select [(value)]="selected" placeholder="Select Programming Language">
+            <mat-label class="select-label">Select Programming Language</mat-label>
+            <mat-select [(value)]="selected">
                 <mat-option value="Java">Java</mat-option>
                 <mat-option value="Python">Python</mat-option>
                 <mat-option value="JavaScript">JavaScript</mat-option>
                 <mat-option value="C++">C++</mat-option>
                 <mat-option value="C#">C#</mat-option> 
-                <mat-option value="Go">Go</mat-option>
+                <mat-option value="Go">Go</mat-option> 
                 <mat-option value="Rust">Rust</mat-option>
                 <mat-option value="PHP">PHP</mat-option>
                 <mat-option value="Ruby">Ruby</mat-option>
@@ -31,7 +32,7 @@
             </mat-select>
         </mat-form-field>
         <p class="text-black font-bold mt-3">Code</p>
-        <textarea [(ngModel)]="code" class="w-full h-64 mt-3 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your code here..."></textarea>
+        <textarea [(ngModel)]="editorValue" class="w-full h-64 mt-3 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your code here..."></textarea>
         <p class="text-black font-bold mt-3">Or Upload a File</p>
         <input type="file"  (change)="onFileSelected($event)" #fileInput hidden>
         <button mat-stroked-button type="button" (click)="fileInput.click()"> Upload File </button>

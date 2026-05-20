@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+.logout-dialog .mdc-dialog__surface {
+  border-radius: 20px !important;
+  width:400px !important;
+  overflow: hidden;
+  padding: 20px;
+}
+.logout-dialog .mdc-dialog__title {
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.logout-dialog .mdc-dialog__content {
+  padding: 16px !important;
+}
