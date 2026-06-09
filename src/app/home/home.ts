@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RouterLink ,Router} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class Home {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
-  constructor(private router:Router, private cdr: ChangeDetectorRef){}
+  constructor(private router:Router, private cdr: ChangeDetectorRef, private auth: Auth){}
   email: string = '';
   password: string = '';
   emailError = '';
@@ -51,22 +52,33 @@ export class Home {
     }
 
     // invalid credentials
-    if (
-      this.email !== 'admin@gmail.com' ||
-      this.password !== '123456'
-    ) {
-
-      this.loginError = 'Invalid email or password';
-      return;
-    }
-
-    // SUCCESS LOGIN
     this.loading = true;
 
     setTimeout(() => {
+    const loginData = {
+      email: this.email,
+      password: this.password
+    };
 
-      this.router.navigate(['/utils']);
+    this.auth.login(loginData).subscribe({
+      next: (response: any) => {
+        this.loading = false;
 
-    }, 4000);
-  }
+        if (response.message === 'Login successful') {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('email', this.email);
+          this.router.navigate(['/utils']);
+        } else {
+          this.loginError = response.message;
+        }
+      },
+
+      error: (error) => {
+        this.loading = false;
+        this.loginError = 'Unable to connect to server';
+        console.error(error);
+      }
+    });
+  }, 2000);
+}
 }

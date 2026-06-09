@@ -9,21 +9,26 @@ import {MatSelectModule} from '@angular/material/select';
 import { Router } from "@angular/router";
 import { MatDialog } from '@angular/material/dialog';
 import { ForgotPasswordDialog } from '../forgot-password-dialog/forgot-password-dialog';
+import { Auth } from '../services/auth';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-forgotpassword',
-  imports: [MatButtonModule,MatCardModule,MatInputModule,MatIconModule,MatFormFieldModule,FormsModule,MatSelectModule,],
+  imports: [MatButtonModule,MatCardModule,MatInputModule,MatIconModule,MatFormFieldModule,FormsModule,MatSelectModule,MatProgressSpinnerModule,CommonModule],
   templateUrl: './forgotpassword.html',
   styleUrl: './forgotpassword.css',
 })
 export class Forgotpassword {
   hide = signal(true);
-  selected="option";
+  selected="Select";
   email: string = '';              
   securityAnswer: string = '';
+  newPassword: string = '';
+  loading = false;
   
-  constructor(private router: Router,private dialog: MatDialog) {}
+  constructor(private router: Router,private dialog: MatDialog,private auth: Auth) {}
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
@@ -44,34 +49,49 @@ export class Forgotpassword {
       }
     }
   }
-  submitForgotPassword(email: string,  securityAnswer: string) {
+  submitForgotPassword() {
+    if (this.loading) return;
+    this.loading = true;
+    const payload = {
+      email: this.email,
+      security_question: this.selected,
+      security_answer: this.securityAnswer,
+      new_password: this.newPassword
+    };
+    this.auth.forgotPassword(payload).subscribe({
+      next: (response: any) => {
+        
+        setTimeout(() => {
+          this.loading = false;
+          const dialogRef = this.dialog.open(ForgotPasswordDialog, {
+            width: '500px',
+            height: '200px',
+            data: {
+              title: 'Success',
+              message: response?.message || 'Password updated successfully.'
+            }
+          });
+          dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['/']);
+          });
+        }, 2000); // Show success dialog after 2 seconds
+      },
 
-    const correctEmail = "admin@gmail.com"; 
-    const correctAnswer = "blue";
-    const isValid =
-      email === correctEmail &&
-    securityAnswer.toLowerCase().trim() === correctAnswer;
+      error: (err) => {
+        setTimeout(() => {
+          this.loading = false;
+          const dialogRef = this.dialog.open(ForgotPasswordDialog, {
+            width: '500px',
+            height: '200px',
+            data: {
+              title: 'Error',
+              message: err.error?.detail || 'An error occurred while updating the password.'
+            }
+          });
+          dialogRef.afterClosed().subscribe();
 
-    setTimeout(() => {
-
-      if (isValid) {
-        this.dialog.open(ForgotPasswordDialog, {
-          width: '400px',
-          data: {
-            title: 'Success',
-            message: 'Your password has been reset successfully.'
-          }
-        });
-      } else {
-        this.dialog.open(ForgotPasswordDialog, {
-          width: '400px',
-          data: {
-            title: 'Error',
-            message: 'Entered details are wrong. Please try again.'
-          }
-        });
-      }
-
-    }, 500);
+        }, 2000);
+      } 
+    });
   }
 }

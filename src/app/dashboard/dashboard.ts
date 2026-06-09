@@ -3,6 +3,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Auth } from '../services/auth';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,15 +13,28 @@ import { RouterModule } from '@angular/router';
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
-  name : String = 'admin';
+  name : String = '';
   reviews:any[] = [];
   avgQuality = 0;
   avgSecurity = 0;
   avgPerformance = 0;
 
   @Output() startReview = new EventEmitter<void>();
-
+  constructor(private auth: Auth) {}
   ngOnInit() {
+    console.log("Dashboard loaded");
+
+    const token = localStorage.getItem('token');
+
+    console.log("TOKEN:", token);
+
+    if (token) {
+      const decoded: any = jwtDecode(token);
+
+      console.log("JWT USER:", decoded);
+
+      this.name = decoded.fullname || 'User';
+    }
 
     const savedReviews = localStorage.getItem('reviews');
 

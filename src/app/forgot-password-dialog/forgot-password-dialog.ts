@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-forgot-password-dialog',
-  imports: [MatDialogActions, MatDialogContent],
+  imports: [MatDialogActions, MatDialogContent,MatButtonModule,MatDialogModule],
   templateUrl: './forgot-password-dialog.html',
   styleUrl: './forgot-password-dialog.css',
 })

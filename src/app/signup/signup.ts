@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { RouterLink ,Router} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +24,8 @@ export class Signup {
     event.stopPropagation();
   }
   selected = '';
-  constructor(private router: Router) {}
+  signupMessage: string = '';
+  constructor(private router: Router, private auth: Auth) {}
   handleAction(action: string) {
 
     if (action === 'close') {
@@ -54,7 +56,10 @@ export class Signup {
   loading = false;
   signupSuccess = false;
   signup() {
+    if (this.loading) return;
+    console.log("SIGNUP CLICKED");
     // reset errors
+    let isValid = true;
     this.emailError = '';
     this.passwordError = '';
     this.contactError = '';
@@ -64,46 +69,74 @@ export class Signup {
     // empty name validation
     if (!this.name) {
       this.nameError = 'Full name is required';
+      isValid = false;
     }
     // empty email validation
-    if (!this.email.includes('@')) {
+    if (!this.email || !this.email.includes('@')) {
       this.emailError = 'Please enter a valid email address';
+      isValid = false;
     }
     // empty password validation
     if (this.password.length < 6) {
       this.passwordError = 'Password must be at least 6 characters long';
+      isValid = false;
     }   
     // empty contact validation 
     if (this.contact.length !== 10) {    
       this.contactError = 'Enter valid 10 digit number';
+      isValid = false;
     }
     // empty security question validation 
     if (!this.securityQuestion) {
       this.securityQuestionError = 'Security question is required';
+      isValid = false;
     }
     // empty security answer validation
     if (!this.securityAnswer) {
       this.securityAnswerError = 'Security answer is required';
+      isValid = false;
     }
+    if (!isValid) return;
     // stop if empty fields
-    if (this.emailError || this.passwordError || this.contactError || this.nameError || this.securityQuestionError || this.securityAnswerError) {
-      return;
-    }
+  
     this.loading = true;
 
-    setTimeout(() => {
+    const signupData = {
+      fullname: this.name,
+      email: this.email,
+      password: this.password,
+      contact: this.contact,
+      security_question: this.securityQuestion,
+      security_answer: this.securityAnswer
+    };
+    this.auth.signup(signupData)
+      .subscribe({
+          next: (response: any) => {
+            this.loading = false;
 
-      this.loading = false;
+            if (response?.message === 'User registered successfully') {
+              this.signupMessage = 'Account created successfully!';
+              this.loading = false;
+              this.signupSuccess = true;
 
-      this.signupSuccess = true;
+              setTimeout(() => {
+                this.signupMessage = '';
+                this.router.navigate(['/']);
+              }, 2000);
 
-      setTimeout(() => {
+            } else {
 
-        this.router.navigate(['/']);
+              alert(response?.message || 'Signup failed');
+            }
+          },
 
-      }, 2000);
+          error: (error) => {
+            console.error('Signup error:', error);
+            this.loading = false;
 
-    }, 3000);
-  }
+            alert('Unable to connect to server');
+          }
+        });
+    }
 }
 
