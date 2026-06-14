@@ -1,3 +1,10 @@
+<img width="1885" height="841" alt="image" src="https://github.com/user-attachments/assets/8cb73218-eeed-47be-97f1-bff298c45a3a" />
+<img width="1890" height="856" alt="image" src="https://github.com/user-attachments/assets/94a79810-f3bb-4f43-a92d-cbac366af8f6" />
+<img width="1900" height="837" alt="image" src="https://github.com/user-attachments/assets/49d2f299-de79-4823-8403-d298e4373ffe" />
+<img width="1901" height="846" alt="image" src="https://github.com/user-attachments/assets/d2219a2a-602e-46f4-8b13-6241c60f39d9" />
+<img width="1877" height="857" alt="image" src="https://github.com/user-attachments/assets/c6a72fa5-424e-4865-82f5-77e35881809c" />
+
+
 # CodeReviewSystem
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
