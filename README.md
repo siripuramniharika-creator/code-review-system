@@ -1,9 +1,8 @@
-<img width="1885" height="841" alt="image" src="https://github.com/user-attachments/assets/8cb73218-eeed-47be-97f1-bff298c45a3a" />
-<img width="1890" height="856" alt="image" src="https://github.com/user-attachments/assets/94a79810-f3bb-4f43-a92d-cbac366af8f6" />
-<img width="1900" height="837" alt="image" src="https://github.com/user-attachments/assets/49d2f299-de79-4823-8403-d298e4373ffe" />
-<img width="1901" height="846" alt="image" src="https://github.com/user-attachments/assets/d2219a2a-602e-46f4-8b13-6241c60f39d9" />
-<img width="1877" height="857" alt="image" src="https://github.com/user-attachments/assets/c6a72fa5-424e-4865-82f5-77e35881809c" />
-
+<img width="1903" height="840" alt="image" src="https://github.com/user-attachments/assets/43c0b46c-a102-40d4-a751-b88633a7efe0" />
+<img width="1890" height="858" alt="image" src="https://github.com/user-attachments/assets/fd5aeb59-e0a3-46e4-a17f-c3d11c29c42c" />
+<img width="1888" height="717" alt="image" src="https://github.com/user-attachments/assets/e8730d00-9ee4-4b41-8a55-b4a81fac07ab" />
+<img width="1898" height="851" alt="image" src="https://github.com/user-attachments/assets/d7eba27f-9ebe-4afd-867b-5f21791493b0" />
+<img width="1893" height="715" alt="image" src="https://github.com/user-attachments/assets/c2efe8d0-bbe2-4c47-b2ff-a6b558f9a751" />
 
 # CodeReviewSystem
 
