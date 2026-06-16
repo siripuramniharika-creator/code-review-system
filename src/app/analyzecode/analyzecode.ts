@@ -4,6 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Review } from '../services/review';
 
 @Component({
   selector: 'app-analyzecode',
@@ -11,9 +13,9 @@ import { Output, EventEmitter } from '@angular/core';
   templateUrl: './analyzecode.html',
   styleUrl: './analyzecode.css',
 })
-export class Analyzecode implements OnInit, OnDestroy{
+export class Analyzecode implements OnInit, OnDestroy{ 
   
-  @Output() reviewCompleted = new EventEmitter<void>();
+  @Output() reviewCompleted = new EventEmitter<any>();
 
   progress = 0;
 
@@ -28,7 +30,7 @@ export class Analyzecode implements OnInit, OnDestroy{
   currentStep = 0;
   intervalId: any;
 
-  constructor(private cdr: ChangeDetectorRef,private router: Router) {}
+  constructor(private cdr: ChangeDetectorRef,private router: Router, private http: HttpClient, private review: Review) {}
 
   ngOnInit() {
     console.log("Analyzecode loaded 🚀");
@@ -48,7 +50,32 @@ export class Analyzecode implements OnInit, OnDestroy{
       else {
         clearInterval(this.intervalId);
 
-        this.reviewCompleted.emit();
+        const payload = {
+          language: "python",
+          code: "def test():\n    eval('2+2')"
+        };
+
+        this.http.post('http://127.0.0.1:8000/api/review', payload)
+        .subscribe({
+          next: (response: any) => {
+            console.log("API SUCCESS", response);
+
+            this.review.setResult(response);
+
+            console.log("Navigating...");
+
+            this.router.navigate(['/code-review'])
+            .then(result => {
+              console.log("Navigation result:", result);
+            })
+            .catch(err => {
+              console.error("Navigation failed:", err);
+            });
+          },
+          error: (err) => {
+            console.error("API ERROR", err);
+          }
+        });
       }
 
     }, 100);

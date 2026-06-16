@@ -12,7 +12,7 @@ import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-home',
-  imports: [MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatFormFieldModule, RouterLink,CommonModule,FormsModule, MatProgressSpinnerModule],
+  imports: [MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatFormFieldModule, RouterLink, CommonModule, FormsModule, MatProgressSpinnerModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

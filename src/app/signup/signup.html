@@ -90,7 +90,7 @@
                     {{ signupMessage }}
             </p>
             <button type="button" matButton="filled" class="signup-page-signup-button w-full flex items-center" (click)="signup()" [disabled]="loading">Sign Up</button>
-            <div *ngIf="loading" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+            <div *ngIf="loading" class=" loading fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
                 
                 <mat-spinner diameter="60"></mat-spinner>
 

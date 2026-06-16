@@ -12,10 +12,19 @@ export class App implements OnInit {
   protected readonly title = signal('code-review-system');
   private timeout: any;
   private intervalId: any;
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
   ngOnInit() {
+    this.handleRefreshRedirect();
     this.startAutoLogout();
+  }
+  handleRefreshRedirect() {
+
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+
+    if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+      this.router.navigate(['/']);
+    }
   }
 
   startAutoLogout() {

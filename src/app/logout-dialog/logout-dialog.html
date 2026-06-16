@@ -1,18 +1,18 @@
 <h2 mat-dialog-title  class="font-semibold text-lg border-2px pb-4">Confirm Logout</h2>
 
-<mat-dialog-content>
+<mat-dialog-content  class="dialog-content">
 
   <!-- BEFORE CONFIRM -->
-  <div *ngIf="!loggingOut">
+ <div class="dialog-body">
     Are you sure you want to logout?
   </div>
 
   <!-- AFTER CONFIRM -->
-  <div *ngIf="loggingOut" class="flex flex-col items-center justify-center py-6 gap-4">
+  <div *ngIf="loggingOut" class=" loading flex flex-col items-center justify-center py-6 gap-4">
 
-    <mat-spinner diameter="60"></mat-spinner>
+    <mat-spinner diameter="50" mode="indeterminate"></mat-spinner>
 
-    <p class="text-gray-600 text-sm">
+    <p class="text-lg font-semibold text-blue-900">
       Logging you out...
     </p>
 

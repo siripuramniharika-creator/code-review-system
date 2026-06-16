@@ -61,7 +61,7 @@ export class CodeEditor {
             horizontalPosition: 'right',
             verticalPosition: 'top'
           }
-        );
+        ); 
         return;
 
     }
@@ -88,7 +88,7 @@ export class CodeEditor {
   }
   onFileSelected(event: any) {
 
-    this.uploadedFile = event.target.files[0];
+    this.uploadedFile = event.target.files[0]; 
 
   }
   

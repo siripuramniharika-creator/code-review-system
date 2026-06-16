@@ -20,5 +20,5 @@ export const routes: Routes = [
     {path:'profile',component:Profile},
     {path:'code-editor', component:CodeEditor},
     {path:'analyze-code', component: Analyzecode},
-    {path:'code-review', component:CodeReview}
+    {path:'code-review', component:CodeReview},
 ];

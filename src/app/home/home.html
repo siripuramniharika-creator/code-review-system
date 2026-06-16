@@ -1,13 +1,5 @@
-@if(loading) {
-    <div class="fixed inset-0 flex items-center justify-center bg-white z-50">
 
-        <mat-spinner diameter="60"></mat-spinner>
-         <p class="mt-5 text-lg font-semibold text-blue-900">
-            Logging in...
-        </p>
-    </div> 
-}
-@else {
+<!-- @else { -->
     <div class="home-main font-[sans-serif]  p-5 bg-blue-100 min-h-screen items-center justify-center">
         <div class="home-header flex flex-col justify-center items-center ">
             <mat-card class="home-header-card p-4 bg-linear-to-r from-blue-950 to-blue-700 items-center justify-center rounded-lg  shadow-2xl">
@@ -19,6 +11,15 @@
         </div> 
         <div class="home-content mt-5 flex items-center justify-center">
             <mat-card class="home-page-card  bg-white flex flex-col items-center justify-center rounded-4xl shadow-10xl p-2 space-y-2  w-112.5">
+                @if (loading) {
+                    <div class="loading">
+
+                        <mat-spinner diameter="60" ></mat-spinner>
+                        <p class="mt-5 text-lg font-semibold text-blue-900">
+                            Logging in... 
+                        </p>
+                    </div> 
+                }
                 <mat-card-header>
                     <mat-card-subtitle class="home-page-card-subtitle font-[sans-serif] font-bold ">Welcome back</mat-card-subtitle>
                 </mat-card-header>
@@ -72,4 +73,4 @@
             </mat-card>
         </div>
     </div>
-}
+<!-- } -->
