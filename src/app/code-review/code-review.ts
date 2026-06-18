@@ -4,11 +4,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { EventEmitter, Output } from '@angular/core';
-import {Review} from '../services/review';
+import { Review } from '../services/review';
 
 @Component({
   selector: 'app-code-review',
-  imports: [MatButtonModule, MatCardModule, MatIconModule, CommonModule],
+  imports: [
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    CommonModule
+  ],
   templateUrl: './code-review.html',
   styleUrl: './code-review.css',
 })
@@ -24,7 +29,6 @@ export class CodeReview implements OnInit {
 
   loading = true;
 
-  // ✅ dynamic data (from API)
   reviewResult: any;
 
   qualityScore = 0;
@@ -45,28 +49,42 @@ export class CodeReview implements OnInit {
 
     const data = this.review.getResult();
 
+    console.log('==============================');
+    console.log('Review data received:', data);
+    console.log('==============================');
+
     if (!data) {
-      console.log("No review data found");
+      console.log('No review data found');
       this.loading = false;
       return;
     }
 
     this.reviewResult = data;
 
-    // scores
-    this.qualityScore = data.quality_score;
-    this.securityScore = data.security_score;
-    this.performanceScore = data.performance_score;
+    // Scores
+    this.qualityScore = data.quality_score || 0;
+    this.securityScore = data.security_score || 0;
+    this.performanceScore = data.performance_score || 0;
 
-    // issues + suggestions
+    // Issues & Suggestions
     this.issues = data.issues || [];
     this.suggestions = data.suggestions || [];
 
-    // code comparison
+    // Code Comparison
     this.comparison = {
-      originalCode: data.original_code,
-      improvedCode: data.improved_code
+      originalCode: data.original_code || '',
+      improvedCode: data.improved_code || ''
     };
+
+    console.log('Quality Score:', this.qualityScore);
+    console.log('Security Score:', this.securityScore);
+    console.log('Performance Score:', this.performanceScore);
+
+    console.log('Issues:', this.issues);
+    console.log('Suggestions:', this.suggestions);
+
+    console.log('Original Code:', this.comparison.originalCode);
+    console.log('Improved Code:', this.comparison.improvedCode);
 
     this.loading = false;
   }
@@ -100,6 +118,10 @@ AI SUGGESTIONS
 ${this.suggestions.map((s, index) =>
   `${index + 1}. ${s.title} - ${s.description}`
 ).join('\n')}
+
+IMPROVED CODE
+-------------
+${this.comparison.improvedCode}
 `;
 
     const blob = new Blob([report], { type: 'text/plain' });
